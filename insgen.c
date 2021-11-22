@@ -38,7 +38,7 @@ static int _insgen_ins(insgen_t *gen, uint8_t op) // {{{
     if (!tmp) {
       return -1;
     }
-    gen->ins = tmp;
+    gen->ins = (uint8_t *)tmp;
   }
 
   gen->ins[gen->len] = op;
@@ -54,7 +54,7 @@ static int _insgen_imm(insgen_t *gen, int num) // {{{
     if (!tmp) {
       return -1;
     }
-    gen->imms = tmp;
+    gen->imms = (int32_t *)tmp;
   }
 
   const int ret = gen->ilen;
@@ -71,7 +71,7 @@ static int _insgen_brt(insgen_t *gen, int32_t lidx) // {{{
     if (!tmp) {
       return -1;
     }
-    gen->brtargets = tmp;
+    gen->brtargets = (int32_t *)tmp;
   }
 
   gen->brtargets[gen->blen] = lidx;
@@ -87,7 +87,7 @@ static int _insgen_lab(insgen_t *gen, int32_t ipos) // {{{
     if (!tmp) {
       return -1;
     }
-    gen->labels = tmp;
+    gen->labels = (int32_t *)tmp;
   }
 
   gen->labels[gen->llen] = ipos;
